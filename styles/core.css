@@ -65,91 +65,15 @@ a:hover { color: var(--gold-hover); }
 .page { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
 
 /* =============================================
-   BILINGUAL TEXT — persistent dual display
+   BILINGUAL TEXT — single language display.
 
-   Both languages are always visible.
-   Primary at full opacity, secondary beneath
-   as a quieter annotation. Toggle swaps which
-   is primary vs secondary. No hover magic.
+   Only the active language is shown.
+   Toggle swaps between EN and UK.
    ============================================= */
 
-/* Container */
-.bi, .bi-block { position: relative; }
-.bi { display: inline; }
-.bi-block { display: block; }
-
-/* Transitions for language swap */
-.bi .lang-en, .bi .lang-uk,
-.bi-block .lang-en, .bi-block .lang-uk {
-  transition: opacity 400ms ease, transform 400ms ease;
-}
-
-/* ---- Primary language: full visibility ---- */
-[data-lang="en"] .lang-en,
-[data-lang="uk"] .lang-uk {
-  opacity: 1;
-}
-
-/* ---- Secondary language: visible annotation beneath ---- */
-[data-lang="en"] .lang-uk,
-[data-lang="uk"] .lang-en {
-  display: block;
-  opacity: 0.4;
-  font-style: italic;
-  font-size: 0.88em;
-  margin-top: 0.25em;
-}
-
-/* Titles: secondary is a gloss */
-.header__title [data-lang="en"] .lang-uk,
-.header__title [data-lang="uk"] .lang-en,
-.entry__title .lang-uk,
-.entry__title .lang-en,
-.note__title .lang-uk,
-.note__title .lang-en {
-  /* inherits the annotation style above */
-}
-
-[data-lang="en"] .entry__title .lang-uk,
-[data-lang="uk"] .entry__title .lang-en,
-[data-lang="en"] .note__title .lang-uk,
-[data-lang="uk"] .note__title .lang-en,
-[data-lang="en"] .header__title .lang-uk,
-[data-lang="uk"] .header__title .lang-en {
-  font-size: 0.75em;
-  opacity: 0.35;
-  margin-top: 0.125em;
-}
-
-/* Body text: annotation with gold left-border */
-[data-lang="en"] .entry__excerpt .lang-uk,
-[data-lang="uk"] .entry__excerpt .lang-en,
-[data-lang="en"] .note__body .lang-uk,
-[data-lang="uk"] .note__body .lang-en,
-[data-lang="en"] .header__bio .lang-uk,
-[data-lang="uk"] .header__bio .lang-en {
-  font-size: 0.875em;
-  border-left: 1.5px solid var(--gold);
-  padding-left: 0.75em;
-  margin-top: 0.5em;
-  opacity: 0.35;
-}
-
-/* Fragments: secondary replaces, crossfade style */
-[data-lang="en"] .fragment .lang-uk,
-[data-lang="uk"] .fragment .lang-en {
-  font-size: 0.92em;
-  opacity: 0.45;
-  margin-top: 0.375em;
-  border-left: none;
-  padding-left: 0;
-}
-
-/* ---- Inline bilingual (nav, labels) — show only primary ---- */
-.bi-inline { position: relative; }
-
-[data-lang="en"] .bi-inline .lang-uk { display: none; }
-[data-lang="uk"] .bi-inline .lang-en { display: none; }
+/* Hide the inactive language everywhere */
+[data-lang="en"] .lang-uk { display: none; }
+[data-lang="uk"] .lang-en { display: none; }
 
 /* =============================================
    NAV

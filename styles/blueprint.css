@@ -348,16 +348,6 @@ body {
   font-size: 0.875rem;
 }
 
-/* Bilingual overrides for blueprint */
-[data-lang="en"] .entry__excerpt .lang-uk,
-[data-lang="uk"] .entry__excerpt .lang-en,
-[data-lang="en"] .bp-body .lang-uk,
-[data-lang="uk"] .bp-body .lang-en,
-[data-lang="en"] .bp-subtitle .lang-uk,
-[data-lang="uk"] .bp-subtitle .lang-en {
-  border-left-color: var(--bp-cyan);
-}
-
 /* Responsive */
 @media (max-width: 600px) {
   .page { max-width: 100%; }
