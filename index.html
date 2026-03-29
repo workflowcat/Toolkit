@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit Helmsley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F0E8;
+      --surface: #EFEADE;
+      --text: #2B2621;
+      --text-mid: #6B6259;
+      --text-faint: #A39B90;
+      --gold: #B08D3E;
+      --gold-soft: rgba(176,141,62,0.12);
+      --gold-hover: #957A35;
+      --crack: #C8BFA8;
+      --border: #DDD6CA;
+      --code-bg: #EAE4D8;
+      --accent-research: #6B7F8A;
+      --accent-tools: #8B7A4A;
+      --accent-arts: #9A6B55;
+      --accent-garden: #6A8566;
+      --accent-defense: #787878;
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #18150F;
+      --surface: #211E17;
+      --text: #E0D9CE;
+      --text-mid: #7A7268;
+      --text-faint: #4A4440;
+      --gold: #C4A24E;
+      --gold-soft: rgba(196,162,78,0.08);
+      --gold-hover: #D4B45E;
+      --crack: #3A352C;
+      --border: #2E2A22;
+      --code-bg: #1E1B14;
+      --accent-research: #8AA0AE;
+      --accent-tools: #AE9A5E;
+      --accent-arts: #B8876E;
+      --accent-garden: #85A880;
+      --accent-defense: #8A8A8A;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      transition: background 300ms ease, color 300ms ease;
+    }
+
+    ::selection { background: var(--gold-soft); }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-hover); }
+    :focus-visible { outline: 1.5px solid var(--gold); outline-offset: 2px; }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+
+    /* =============================================
+       BILINGUAL TEXT
+
+       Two layers. The other language is always there,
+       just beneath the surface. Hover to see through.
+       Toggle to flip which is surface, which is depth.
+       ============================================= */
+
+    .bi, .bi-block {
+      position: relative;
+      cursor: default;
+    }
+
+    .bi { display: inline; }
+    .bi-block { display: block; }
+
+    .bi .lang-en, .bi .lang-uk,
+    .bi-block .lang-en, .bi-block .lang-uk {
+      transition: opacity 400ms ease, transform 400ms ease, filter 400ms ease;
+    }
+
+    /* ---- Default: primary visible, secondary hidden ---- */
+    [data-lang="en"] .bi .lang-en,
+    [data-lang="en"] .bi-block .lang-en,
+    [data-lang="uk"] .bi .lang-uk,
+    [data-lang="uk"] .bi-block .lang-uk {
+      opacity: 1;
+    }
+
+    [data-lang="en"] .bi .lang-uk,
+    [data-lang="en"] .bi-block .lang-uk,
+    [data-lang="uk"] .bi .lang-en,
+    [data-lang="uk"] .bi-block .lang-en {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ---- HOVER: the primary softens, the other surfaces ---- */
+
+    /* Primary text: defocus slightly, drift up */
+    .bi:hover > :first-child,
+    .bi-block:hover > :first-child {
+      position: relative;
+    }
+
+    [data-lang="en"] .bi:hover .lang-en,
+    [data-lang="en"] .bi-block:hover .lang-en,
+    [data-lang="uk"] .bi:hover .lang-uk,
+    [data-lang="uk"] .bi-block:hover .lang-uk {
+      opacity: 0.35;
+      transform: translateY(-2px);
+    }
+
+    /* Other language: emerge beneath, at rest */
+    [data-lang="en"] .bi:hover .lang-uk,
+    [data-lang="en"] .bi-block:hover .lang-uk,
+    [data-lang="uk"] .bi:hover .lang-en,
+    [data-lang="uk"] .bi-block:hover .lang-en {
+      position: relative;
+      opacity: 0.85;
+      pointer-events: auto;
+      font-style: italic;
+      display: block;
+      margin-top: 0.125em;
+    }
+
+    /* Titles: the other language is slightly smaller, like a gloss */
+    .entry__title .bi:hover .lang-uk,
+    .entry__title .bi:hover .lang-en,
+    .header__title.bi-block:hover .lang-uk,
+    .header__title.bi-block:hover .lang-en,
+    .note__title .bi:hover .lang-uk,
+    .note__title .bi:hover .lang-en {
+      font-size: 0.85em;
+    }
+
+    /* Body text: other language appears as annotation, lighter weight */
+    .entry__excerpt.bi-block:hover > .lang-uk,
+    .entry__excerpt.bi-block:hover > .lang-en,
+    .note__body.bi-block:hover > .lang-uk,
+    .note__body.bi-block:hover > .lang-en,
+    .header__bio.bi-block:hover > .lang-uk,
+    .header__bio.bi-block:hover > .lang-en {
+      font-size: 0.9em;
+      border-left: 1.5px solid var(--gold);
+      padding-left: 0.75em;
+      margin-top: 0.5em;
+      opacity: 0.55;
+    }
+
+    /* Fragments: the other language replaces — a true crossfade */
+    .fragment .bi-block:hover > .lang-en,
+    .fragment .bi-block:hover > .lang-uk {
+      transform: none;
+      margin-top: 0.375em;
+      font-size: 0.95em;
+      opacity: 0.7;
+      border-left: none;
+      padding-left: 0;
+    }
+
+    /* A tiny gold dot appears before bilingual elements on hover */
+    .bi-block::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 0.5em;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 400ms ease;
+    }
+
+    .bi-block:hover::before {
+      opacity: 0.5;
+    }
+
+    /* ---- Inline bilingual (nav, labels) — simple swap ---- */
+    .bi-inline {
+      position: relative;
+      cursor: default;
+    }
+
+    .bi-inline .lang-uk,
+    .bi-inline .lang-en {
+      transition: opacity 300ms ease;
+    }
+
+    [data-lang="en"] .bi-inline .lang-uk { display: none; }
+    [data-lang="uk"] .bi-inline .lang-en { display: none; }
+
+    .bi-inline:hover .lang-uk,
+    .bi-inline:hover .lang-en {
+      display: inline !important;
+    }
+
+    [data-lang="en"] .bi-inline:hover .lang-uk,
+    [data-lang="uk"] .bi-inline:hover .lang-en {
+      opacity: 0.4;
+      font-style: italic;
+      margin-left: 0.375rem;
+      font-size: 0.9em;
+    }
+
+    /* =============================================
+       NAV
+       ============================================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 2rem;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 721px) {
+      .nav { max-width: none; padding: 0.875rem calc(50% - 360px + 2rem); }
+    }
+
+    .nav__name { font-weight: 400; font-size: 0.875rem; color: var(--text); text-decoration: none; }
+    .nav__right { display: flex; align-items: center; gap: 1.25rem; }
+    .nav__link { font-size: 0.75rem; font-weight: 400; color: var(--text-mid); text-decoration: none; transition: color 200ms; }
+    .nav__link:hover { color: var(--text); }
+
+    .lang-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2px 7px;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--text-faint);
+      cursor: pointer;
+      transition: all 200ms;
+      letter-spacing: 0.03em;
+    }
+    .lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+    .dice-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      width: 26px; height: 26px;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 200ms;
+      position: relative;
+    }
+    .dice-btn:hover { border-color: var(--gold); }
+    .dice-btn:hover .dice-face { color: var(--gold); }
+    .dice-btn:active { transform: scale(0.92); }
+
+    .dice-face {
+      font-size: 13px;
+      line-height: 1;
+      color: var(--text-faint);
+      transition: color 200ms, transform 300ms ease;
+    }
+
+    .dice-btn--rolling .dice-face {
+      animation: dice-spin 0.15s linear infinite;
+    }
+
+    @keyframes dice-spin {
+      0%   { transform: rotateZ(0deg); }
+      25%  { transform: rotateZ(90deg); }
+      50%  { transform: rotateZ(180deg); }
+      75%  { transform: rotateZ(270deg); }
+      100% { transform: rotateZ(360deg); }
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-faint);
+      font-size: 0.8125rem;
+      padding: 2px;
+      transition: color 200ms;
+    }
+    .theme-toggle:hover { color: var(--gold); }
+
+    /* =============================================
+       HEADER
+       ============================================= */
+    .header { padding: 5rem 0 3rem; }
+
+    .header__title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+    }
+
+    .header__title .lang-uk {
+      /* Ukrainian title styling when visible */
+    }
+
+    .header__bio {
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       CRACK DIVIDER
+       ============================================= */
+    .crack { display: block; width: 100%; height: 16px; margin: 2.5rem 0; overflow: visible; }
+    .crack-thin { stroke: var(--crack); stroke-width: 0.5; fill: none; stroke-linecap: round; }
+    .crack-gold { stroke: var(--gold); stroke-width: 1.5; fill: none; stroke-linecap: round; opacity: 0.35; }
+
+    /* =============================================
+       CONTENT ENTRIES
+       ============================================= */
+    .entry { margin-bottom: 3rem; }
+
+    .entry__type {
+      font-size: 0.5625rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.25rem;
+    }
+
+    .entry__type--research { color: var(--accent-research); }
+    .entry__type--tools { color: var(--accent-tools); }
+    .entry__type--arts { color: var(--accent-arts); }
+    .entry__type--garden { color: var(--accent-garden); }
+    .entry__type--defense { color: var(--accent-defense); }
+
+    .entry__title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 0.375rem;
+    }
+
+    .entry__title a { color: var(--text); transition: color 200ms; }
+    .entry__title a:hover { color: var(--gold); }
+
+    .entry__excerpt {
+      font-weight: 300;
+      color: var(--text-mid);
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      max-width: 580px;
+    }
+
+    .entry__meta {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--text-faint);
+      margin-top: 0.5rem;
+    }
+
+    /* Garden note */
+    .note {
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .note__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .note__title a { color: var(--text); transition: color 200ms; }
+    .note__title a:hover { color: var(--gold); }
+
+    .note__body {
+      font-weight: 300;
+      font-size: 0.9375rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .note__connections {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--text-faint);
+      margin-top: 0.375rem;
+    }
+
+    .note__connections a { color: var(--text-faint); border-bottom: 1px dotted var(--border); }
+    .note__connections a:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Tool */
+    .tool {
+      margin-bottom: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+    }
+
+    .tool__name { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 400; margin-bottom: 0.25rem; }
+    .tool__name a { color: var(--text); transition: color 200ms; }
+    .tool__name a:hover { color: var(--gold); }
+    .tool__desc { font-size: 0.875rem; font-weight: 300; color: var(--text-mid); }
+    .tool__stack { font-family: var(--font-mono); font-size: 0.625rem; color: var(--text-faint); margin-top: 0.5rem; }
+
+    .tool__status {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 1px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      color: var(--text-faint);
+      margin-left: 0.5rem;
+    }
+
+    /* Quote fragment */
+    .fragment {
+      margin: 2.5rem 0;
+      padding: 0 0 0 1.25rem;
+      border-left: 2px solid var(--gold);
+      opacity: 0.85;
+    }
+
+    .fragment__text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.125rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .fragment__source { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.375rem; }
+
+    /* Drift / follow the crack */
+    .drift {
+      margin: 3rem 0;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .drift__label {
+      font-size: 0.625rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .drift__links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .drift__link {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      color: var(--text-mid);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      transition: color 200ms;
+    }
+    .drift__link:hover { color: var(--gold); }
+
+    .drift__link-type {
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      min-width: 48px;
+    }
+
+    /* Inline viz */
+    .viz-inline {
+      margin: 2rem -1rem;
+      padding: 1.5rem 1rem;
+      background: var(--surface);
+      border-radius: 4px;
+    }
+
+    .viz-inline__caption {
+      font-size: 0.6875rem;
+      font-weight: 300;
+      color: var(--text-faint);
+      margin-top: 0.75rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .viz-inline svg { width: 100%; display: block; }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 0 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6875rem;
+      color: var(--text-faint);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    .footer a { color: var(--text-faint); transition: color 200ms; }
+    .footer a:hover { color: var(--gold); }
+
+    /* ---- Dice overlay ---- */
+    .dice-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--bg);
+      opacity: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      flex-direction: column;
+    }
+    .dice-overlay--open { display: flex; }
+
+    .dice-overlay__inner {
+      max-width: 520px;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Rolling phase — titles flicker through */
+    .dice-overlay__rolling {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--text-mid);
+      min-height: 3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+
+    .dice-overlay__rolling-text {
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Gold progress line */
+    .dice-overlay__progress {
+      width: 80px;
+      height: 1px;
+      background: var(--border);
+      margin: 1.25rem auto 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 1px;
+    }
+
+    .dice-overlay__progress-fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 0;
+      background: var(--gold);
+    }
+
+    /* Landed result */
+    .dice-overlay__result {
+      display: none;
+      text-align: center;
+    }
+
+    .dice-overlay__result--visible {
+      display: block;
+      animation: dice-land 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes dice-land {
+      0%   { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .dice-overlay__type {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.625rem;
+    }
+
+    .dice-overlay__title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 0.875rem;
+    }
+    .dice-overlay__title { color: var(--text); }
+    .dice-overlay__title a { color: inherit; text-decoration: none; transition: color 200ms; }
+    .dice-overlay__title a:hover { color: var(--gold); }
+
+    .dice-overlay__excerpt {
+      font-size: 0.9375rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .dice-overlay__actions {
+      display: flex; gap: 0.75rem;
+      justify-content: center; align-items: center;
+    }
+
+    .dice-overlay__again {
+      background: none; border: 1px solid var(--border);
+      border-radius: 3px;
+      width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+    .dice-overlay__again .dice-face { font-size: 13px; color: var(--text-mid); transition: all 200ms; }
+    .dice-overlay__again:hover { border-color: var(--gold); }
+    .dice-overlay__again:hover .dice-face { color: var(--gold); }
+
+    .dice-overlay__close {
+      background: none; border: 1px solid var(--border);
+      border-radius: 3px; padding: 0.375rem 0.875rem;
+      font-family: var(--font-mono); font-size: 0.6875rem;
+      color: var(--text-mid); cursor: pointer;
+      transition: all 200ms;
+    }
+    .dice-overlay__close:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 600px) {
+      .page { padding: 0 1.25rem; }
+      .header { padding: 3rem 0 2rem; }
+      .header__title { font-size: 1.75rem; }
+      .nav { padding: 0.875rem 1.25rem; }
+      .nav__link { display: none; }
+
+      /* On mobile, disable hover — toggle only */
+      .bi-block::before { display: none; }
+      [data-lang="en"] .bi:hover .lang-uk,
+      [data-lang="en"] .bi-block:hover .lang-uk,
+      [data-lang="uk"] .bi:hover .lang-en,
+      [data-lang="uk"] .bi-block:hover .lang-en { display: none !important; opacity: 0; position: absolute; }
+      [data-lang="en"] .bi:hover .lang-en,
+      [data-lang="en"] .bi-block:hover .lang-en,
+      [data-lang="uk"] .bi:hover .lang-uk,
+      [data-lang="uk"] .bi-block:hover .lang-uk { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav__name">Kit Helmsley</a>
+    <div class="nav__right">
+      <span class="bi-inline nav__link"><span class="lang-en">work</span><span class="lang-uk">робота</span></span>
+      <span class="bi-inline nav__link"><span class="lang-en">garden</span><span class="lang-uk">сад</span></span>
+      <span class="bi-inline nav__link"><span class="lang-en">about</span><span class="lang-uk">про</span></span>
+      <button class="dice-btn" id="dice-btn" aria-label="Roll dice"><span class="dice-face">⚄</span></button>
+      <button class="lang-toggle" id="lang-toggle">EN · УК</button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">◐</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <main>
+
+      <!-- HEADER -->
+      <header class="header">
+        <div class="bi-block header__title">
+          <span class="lang-en">One mind, several&nbsp;fields.</span>
+          <span class="lang-uk">Один розум, кілька&nbsp;полів.</span>
+        </div>
+        <div class="bi-block header__bio">
+          <span class="lang-en">I work across legal technology, defense systems, education design, and creative work. The connections between these fields are the point. This site is where those connections surface.</span>
+          <span class="lang-uk">Я працюю на перетині правових технологій, оборонних систем, дизайну освіти та творчої роботи. Зв'язки між цими сферами — це і є суть. Цей сайт — місце, де ці зв'язки виходять на поверхню.</span>
+        </div>
+      </header>
+
+      <!-- CRACK -->
+      <svg class="crack" viewBox="0 0 720 16" preserveAspectRatio="none">
+        <path class="crack-thin" d="M0 8 Q60 6 120 8 Q180 11 250 7 Q310 4 380 8 Q440 12 510 8 Q570 5 640 9 Q690 11 720 8"/>
+        <path class="crack-gold" d="M230 7.5 Q260 6 290 8 Q320 10 350 8"/>
+        <path class="crack-gold" d="M520 7.5 Q550 5.5 580 8"/>
+      </svg>
+
+      <!-- ENTRY: RESEARCH -->
+      <article class="entry">
+        <div class="entry__type entry__type--research">
+          <span class="bi-inline"><span class="lang-en">Research</span><span class="lang-uk">Дослідження</span></span>
+        </div>
+        <h2 class="entry__title">
+          <a href="#">
+            <span class="bi">
+              <span class="lang-en">Adversarial Robustness in Judicial Decision Systems</span>
+              <span class="lang-uk">Стійкість до атак у системах судових рішень</span>
+            </span>
+          </a>
+        </h2>
+        <div class="bi-block entry__excerpt">
+          <span class="lang-en">When we delegate sentencing recommendations to algorithms, we inherit not just their efficiency but their attack surface. This paper maps the vulnerability topology of three deployed court systems and formalizes the transparency-robustness-fairness trilemma.</span>
+          <span class="lang-uk">Коли ми делегуємо рекомендації щодо вироків алгоритмам, ми успадковуємо не лише їхню ефективність, а й їхню вразливість. Ця стаття відображає топологію вразливостей трьох розгорнутих судових систем і формалізує трилему прозорості-стійкості-справедливості.</span>
+        </div>
+        <div class="entry__meta">March 2026 · 22 min</div>
+      </article>
+
+      <!-- NOTE: GARDEN -->
+      <div class="note">
+        <h3 class="note__title">
+          <a href="#">
+            <span class="bi">
+              <span class="lang-en">On Illegibility as Strategy</span>
+              <span class="lang-uk">Про нерозбірливість як стратегію</span>
+            </span>
+          </a>
+        </h3>
+        <div class="bi-block note__body">
+          <span class="lang-en">James C. Scott's concept of legibility inverted. When being hard to read is a feature, not a bug. States need legibility to govern. Individuals sometimes need illegibility to survive.</span>
+          <span class="lang-uk">Концепція розбірливості Джеймса Скотта навпаки. Коли бути важким для прочитання — це перевага, а не вада. Державам потрібна розбірливість для управління. Людям іноді потрібна нерозбірливість для виживання.</span>
+        </div>
+        <div class="note__connections">
+          connected to: <a href="#">pace layers</a> · <a href="#">adversarial robustness</a> · <a href="#">sensor fusion</a>
+        </div>
+      </div>
+
+      <!-- FRAGMENT -->
+      <aside class="fragment">
+        <div class="bi-block fragment__text">
+          <span class="lang-en">The shift from human to algorithmic judgment doesn't eliminate bias. It makes bias <em>addressable</em> — which is either an opportunity or a vulnerability, depending on who's addressing&nbsp;it.</span>
+          <span class="lang-uk">Перехід від людського до алгоритмічного судження не усуває упередженість. Він робить упередженість <em>адресною</em> — що є або можливістю, або вразливістю, залежно від того, хто до неї&nbsp;звертається.</span>
+        </div>
+        <p class="fragment__source">— from "Adversarial Robustness," §3</p>
+      </aside>
+
+      <!-- TOOL -->
+      <div class="tool">
+        <div class="tool__name"><a href="#">voxkit</a> <span class="tool__status">active</span></div>
+        <div class="bi-block tool__desc">
+          <span class="lang-en">Voice interaction layer for legal research databases. Built for courtroom pace — you ask a question out loud and it searches case law in real time.</span>
+          <span class="lang-uk">Голосовий інтерфейс для баз правових досліджень. Створений для темпу судового засідання — ви задаєте питання вголос, і система шукає судову практику в реальному часі.</span>
+        </div>
+        <div class="tool__stack">python · whisper · fastapi</div>
+      </div>
+
+      <!-- CRACK -->
+      <svg class="crack" viewBox="0 0 720 16" preserveAspectRatio="none">
+        <path class="crack-thin" d="M0 9 Q90 5 180 8 Q270 12 360 8 Q450 4 540 9 Q630 12 720 7"/>
+        <path class="crack-gold" d="M160 8 Q200 7 240 9"/>
+        <path class="crack-gold" d="M440 6 Q480 5 520 8.5"/>
+        <path class="crack-gold" d="M620 10 Q660 11 700 7.5"/>
+      </svg>
+
+      <!-- ENTRY: ARTS -->
+      <article class="entry">
+        <div class="entry__type entry__type--arts">
+          <span class="bi-inline"><span class="lang-en">Arts</span><span class="lang-uk">Мистецтво</span></span>
+        </div>
+        <h2 class="entry__title">
+          <a href="#">
+            <span class="bi">
+              <span class="lang-en">The Repair Aesthetic: Why Kintsugi Matters for Systems&nbsp;Design</span>
+              <span class="lang-uk">Естетика ремонту: чому кінцугі має значення для проєктування&nbsp;систем</span>
+            </span>
+          </a>
+        </h2>
+        <div class="bi-block entry__excerpt">
+          <span class="lang-en">Most design philosophies treat failure as something to hide. The Japanese tradition of golden repair suggests a different relationship with breakage — one with practical implications for how we build resilient systems. And for how we think about Ukraine.</span>
+          <span class="lang-uk">Більшість філософій дизайну сприймають невдачу як щось, що потрібно приховати. Японська традиція золотого ремонту пропонує інші стосунки з руйнуванням — з практичними наслідками для того, як ми будуємо стійкі системи. І для того, як ми думаємо про Україну.</span>
+        </div>
+        <div class="entry__meta">January 2026 · 14 min</div>
+      </article>
+
+      <!-- INLINE VIZ -->
+      <div class="viz-inline">
+        <svg viewBox="0 0 660 180" fill="none">
+          <g opacity="0.6">
+            <circle cx="80" cy="90" r="6" fill="none" stroke="var(--accent-research)" stroke-width="0.75"/>
+            <circle cx="180" cy="55" r="10" fill="none" stroke="var(--accent-research)" stroke-width="0.75"/>
+            <circle cx="270" cy="100" r="4" fill="none" stroke="var(--accent-defense)" stroke-width="0.75"/>
+            <circle cx="330" cy="70" r="14" fill="none" stroke="var(--gold)" stroke-width="0.75"/>
+            <circle cx="420" cy="110" r="8" fill="none" stroke="var(--accent-arts)" stroke-width="0.75"/>
+            <circle cx="500" cy="60" r="6" fill="none" stroke="var(--accent-tools)" stroke-width="0.75"/>
+            <circle cx="570" cy="120" r="10" fill="none" stroke="var(--accent-garden)" stroke-width="0.75"/>
+            <line x1="86" y1="88" x2="172" y2="60" stroke="var(--crack)" stroke-width="0.4"/>
+            <line x1="188" y1="62" x2="266" y2="97" stroke="var(--crack)" stroke-width="0.4"/>
+            <line x1="276" y1="98" x2="318" y2="76" stroke="var(--gold)" stroke-width="0.6" opacity="0.3"/>
+            <line x1="342" y1="76" x2="413" y2="106" stroke="var(--crack)" stroke-width="0.4"/>
+            <line x1="427" y1="106" x2="494" y2="64" stroke="var(--crack)" stroke-width="0.4"/>
+            <line x1="506" y1="64" x2="562" y2="114" stroke="var(--crack)" stroke-width="0.4"/>
+            <line x1="330" y1="70" x2="500" y2="60" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
+            <path d="M40 95 Q130 88 220 96 Q310 105 400 90 Q490 75 620 100" stroke="var(--gold)" stroke-width="1" opacity="0.08" fill="none"/>
+          </g>
+          <circle cx="330" cy="70" r="2" fill="var(--gold)" opacity="0.5"/>
+        </svg>
+        <div class="bi-block viz-inline__caption">
+          <span class="lang-en">Citation topology: how judicial AI literature connects across domains.</span>
+          <span class="lang-uk">Топологія цитувань: як література про судовий ШІ з'єднується між доменами.</span>
+        </div>
+      </div>
+
+      <!-- ENTRY: DEFENSE -->
+      <article class="entry">
+        <div class="entry__type entry__type--defense">
+          <span class="bi-inline"><span class="lang-en">Defense</span><span class="lang-uk">Оборона</span></span>
+        </div>
+        <h2 class="entry__title">
+          <a href="#">
+            <span class="bi">
+              <span class="lang-en">Sensor Fusion Under Contested Conditions</span>
+              <span class="lang-uk">Злиття сенсорних даних в умовах протидії</span>
+            </span>
+          </a>
+        </h2>
+        <div class="bi-block entry__excerpt">
+          <span class="lang-en">Field notes from a DoD engagement on maintaining situational awareness when adversaries degrade your inputs. The parallel to judicial AI is not accidental.</span>
+          <span class="lang-uk">Польові нотатки з роботи з Міністерством оборони щодо підтримки ситуаційної обізнаності, коли противники погіршують ваші вхідні дані. Паралель із судовим ШІ не випадкова.</span>
+        </div>
+        <div class="entry__meta">December 2025 · 8 min</div>
+      </article>
+
+      <!-- NOTE: GARDEN -->
+      <div class="note">
+        <h3 class="note__title">
+          <a href="#">
+            <span class="bi">
+              <span class="lang-en">Pace Layers and Software Architecture</span>
+              <span class="lang-uk">Шари темпу та архітектура програмного забезпечення</span>
+            </span>
+          </a>
+        </h3>
+        <div class="bi-block note__body">
+          <span class="lang-en">Stewart Brand's framework maps onto how durable software systems are structured. Infrastructure moves slowly. UI moves fast. The trouble starts when you confuse which layer you're working in.</span>
+          <span class="lang-uk">Фреймворк Стюарта Бренда відповідає тому, як структуровані довговічні програмні системи. Інфраструктура рухається повільно. Інтерфейс — швидко. Проблеми починаються, коли плутаєш шари.</span>
+        </div>
+        <div class="note__connections">
+          connected to: <a href="#">illegibility</a> · <a href="#">kintsugi</a>
+        </div>
+      </div>
+
+      <!-- TOOL -->
+      <div class="tool">
+        <div class="tool__name"><a href="#">precedent-graph</a> <span class="tool__status">archived</span></div>
+        <div class="bi-block tool__desc">
+          <span class="lang-en">Visual tool for mapping citation networks in case law. Reveals doctrinal lineages that aren't obvious from reading individual opinions.</span>
+          <span class="lang-uk">Візуальний інструмент для побудови мереж цитувань у судовій практиці. Виявляє доктринальні лінії, які не очевидні при читанні окремих рішень.</span>
+        </div>
+        <div class="tool__stack">d3.js · node</div>
+      </div>
+
+      <!-- CRACK -->
+      <svg class="crack" viewBox="0 0 720 16" preserveAspectRatio="none">
+        <path class="crack-thin" d="M0 7 Q100 11 200 8 Q300 5 400 9 Q500 13 600 8 Q680 5 720 8"/>
+        <path class="crack-gold" d="M380 8.5 Q420 12 460 9"/>
+      </svg>
+
+      <!-- DRIFT -->
+      <div class="drift">
+        <div class="drift__label">
+          <span class="bi-inline"><span class="lang-en">Follow the crack</span><span class="lang-uk">Слідуй за тріщиною</span></span>
+        </div>
+        <div class="drift__links">
+          <a href="#" class="drift__link"><span class="drift__link-type">arts</span>Why repair matters more than prevention</a>
+          <a href="#" class="drift__link"><span class="drift__link-type">garden</span>Wabi-sabi and the ethics of impermanence</a>
+          <a href="#" class="drift__link"><span class="drift__link-type">defense</span>Graceful degradation in contested systems</a>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div>
+          <span class="bi-inline"><span class="lang-en">Kit Helmsley · 2026 · golden repair</span><span class="lang-uk">Кіт Гелмслі · 2026 · золотий ремонт</span></span>
+        </div>
+        <div><a href="mailto:kit@example.com">email</a> · <a href="#">github ↗</a></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- DICE OVERLAY -->
+  <div class="dice-overlay" id="dice-overlay">
+    <div class="dice-overlay__inner">
+
+      <!-- Rolling phase -->
+      <div class="dice-overlay__rolling" id="dice-rolling">
+        <div class="dice-overlay__rolling-text" id="dice-rolling-text"></div>
+      </div>
+      <div class="dice-overlay__progress" id="dice-progress">
+        <div class="dice-overlay__progress-fill" id="dice-progress-fill"></div>
+      </div>
+
+      <!-- Result phase (hidden during roll) -->
+      <div class="dice-overlay__result" id="dice-result">
+        <div class="dice-overlay__type" id="dice-type"></div>
+        <h2 class="dice-overlay__title"><a href="#" id="dice-title-link"><span id="dice-title"></span></a></h2>
+        <p class="dice-overlay__excerpt" id="dice-excerpt"></p>
+        <div class="dice-overlay__actions">
+          <button class="dice-overlay__again" id="dice-again" aria-label="Roll again"><span class="dice-face">⚂</span></button>
+          <button class="dice-overlay__close" id="dice-close">
+            <span class="bi-inline"><span class="lang-en">close</span><span class="lang-uk">закрити</span></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const html = document.documentElement;
+
+    // Theme
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) html.setAttribute('data-theme', storedTheme);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Language toggle
+    const storedLang = localStorage.getItem('lang');
+    if (storedLang) html.setAttribute('data-lang', storedLang);
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-lang') === 'uk' ? 'en' : 'uk';
+      html.setAttribute('data-lang', next);
+      localStorage.setItem('lang', next);
+      // Update html lang attribute for accessibility
+      html.setAttribute('lang', next === 'uk' ? 'uk' : 'en');
+    });
+
+    // Connection graph
+    const graph = [
+      { id: 'adversarial', title: { en: 'Adversarial Robustness in Judicial Decision Systems', uk: 'Стійкість до атак у системах судових рішень' }, type: 'research', excerpt: { en: 'Mapping the vulnerability topology of deployed court systems.', uk: 'Відображення топології вразливостей розгорнутих судових систем.' }, connects: ['illegibility', 'sensor-fusion', 'statutes', 'kintsugi'] },
+      { id: 'kintsugi', title: { en: 'The Repair Aesthetic: Why Kintsugi Matters', uk: 'Естетика ремонту: чому кінцугі має значення' }, type: 'arts', excerpt: { en: 'A different relationship with breakage — for resilient systems and for Ukraine.', uk: 'Інші стосунки з руйнуванням — для стійких систем і для України.' }, connects: ['adversarial', 'pace-layers', 'illegibility'] },
+      { id: 'sensor-fusion', title: { en: 'Sensor Fusion Under Contested Conditions', uk: 'Злиття сенсорних даних в умовах протидії' }, type: 'defense', excerpt: { en: 'Making decisions under adversarial uncertainty.', uk: 'Прийняття рішень в умовах ворожої невизначеності.' }, connects: ['adversarial', 'illegibility', 'voxkit'] },
+      { id: 'illegibility', title: { en: 'On Illegibility as Strategy', uk: 'Про нерозбірливість як стратегію' }, type: 'garden', excerpt: { en: 'When being hard to read is a feature. States need legibility. Individuals sometimes need its opposite.', uk: 'Коли бути важким для прочитання — це перевага. Державам потрібна розбірливість. Людям іноді — навпаки.' }, connects: ['adversarial', 'sensor-fusion', 'pace-layers'] },
+      { id: 'pace-layers', title: { en: 'Pace Layers and Software Architecture', uk: 'Шари темпу та архітектура програмного забезпечення' }, type: 'garden', excerpt: { en: 'Infrastructure moves slowly. UI moves fast. Problems start when you confuse the layers.', uk: 'Інфраструктура рухається повільно. Інтерфейс — швидко. Проблеми починаються, коли плутаєш шари.' }, connects: ['illegibility', 'kintsugi', 'statutes'] },
+      { id: 'statutes', title: { en: 'Teaching Machines to Read Statutes', uk: 'Навчити машини читати закони' }, type: 'research', excerpt: { en: 'Treating statutes as living networks rather than flat text.', uk: 'Сприймати закони як живі мережі, а не плоский текст.' }, connects: ['adversarial', 'pace-layers', 'precedent-graph'] },
+      { id: 'voxkit', title: { en: 'VoxKit: Voice-First Legal Interface', uk: 'VoxKit: голосовий правовий інтерфейс' }, type: 'tools', excerpt: { en: 'Ask a question out loud and it searches case law in real time.', uk: 'Задайте питання вголос — і система шукає судову практику в реальному часі.' }, connects: ['sensor-fusion', 'statutes', 'precedent-graph'] },
+      { id: 'precedent-graph', title: { en: 'Precedent Graph Explorer', uk: 'Дослідник графу прецедентів' }, type: 'tools', excerpt: { en: 'Mapping citation networks in case law. Reveals doctrinal lineages.', uk: 'Побудова мереж цитувань у судовій практиці. Виявляє доктринальні лінії.' }, connects: ['statutes', 'voxkit', 'kintsugi'] },
+    ];
+
+    let lastRolled = null;
+    let isRolling = false;
+    const diceFaces = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+
+    function pickRandom(exclude) {
+      const candidates = graph.filter(n => n.id !== exclude);
+      const weighted = [];
+      candidates.forEach(c => { for (let i = 0; i < c.connects.length; i++) weighted.push(c); });
+      return weighted[Math.floor(Math.random() * weighted.length)];
+    }
+
+    function animateDiceRoll(callback) {
+      if (isRolling) return;
+      isRolling = true;
+
+      const overlay = document.getElementById('dice-overlay');
+      const rolling = document.getElementById('dice-rolling');
+      const rollingText = document.getElementById('dice-rolling-text');
+      const progressFill = document.getElementById('dice-progress-fill');
+      const result = document.getElementById('dice-result');
+      const diceBtn = document.getElementById('dice-btn');
+      const lang = html.getAttribute('data-lang') || 'en';
+
+      // Reset state
+      rolling.style.display = 'flex';
+      document.getElementById('dice-progress').style.display = 'block';
+      result.classList.remove('dice-overlay__result--visible');
+      result.style.display = 'none';
+      progressFill.style.width = '0';
+      overlay.classList.add('dice-overlay--open');
+      diceBtn.classList.add('dice-btn--rolling');
+
+      // Pick the final result ahead of time
+      const finalPick = pickRandom(lastRolled);
+      lastRolled = finalPick.id;
+
+      // Roll through ~12 random titles with decelerating timing
+      const totalSteps = 12;
+      let step = 0;
+
+      function nextStep() {
+        if (step >= totalSteps) {
+          // Land on the result
+          diceBtn.classList.remove('dice-btn--rolling');
+          diceBtn.querySelector('.dice-face').textContent = diceFaces[Math.floor(Math.random() * 6)];
+          rolling.style.display = 'none';
+          document.getElementById('dice-progress').style.display = 'none';
+
+          // Show result
+          document.getElementById('dice-type').textContent = finalPick.type;
+          document.getElementById('dice-title').textContent = finalPick.title[lang];
+          document.getElementById('dice-excerpt').textContent = finalPick.excerpt[lang];
+          result.style.display = 'block';
+          // Trigger animation on next frame
+          requestAnimationFrame(() => result.classList.add('dice-overlay__result--visible'));
+
+          isRolling = false;
+          callback && callback(finalPick);
+          return;
+        }
+
+        // Pick a random node to flash (last 2 steps use the final pick)
+        const showNode = step >= totalSteps - 2 ? finalPick : graph[Math.floor(Math.random() * graph.length)];
+        rollingText.textContent = showNode.title[lang];
+
+        // Cycle the dice face on the button
+        diceBtn.querySelector('.dice-face').textContent = diceFaces[step % 6];
+
+        // Update progress
+        progressFill.style.width = ((step + 1) / totalSteps * 100) + '%';
+
+        // Decelerate: starts fast (~80ms), ends slow (~280ms)
+        const t = step / totalSteps;
+        const delay = 80 + (t * t * 220);
+
+        step++;
+        setTimeout(nextStep, delay);
+      }
+
+      // Small pause before starting to build anticipation
+      setTimeout(nextStep, 150);
+    }
+
+    function closeOverlay() {
+      document.getElementById('dice-overlay').classList.remove('dice-overlay--open');
+    }
+
+    document.getElementById('dice-btn').addEventListener('click', () => animateDiceRoll());
+    document.getElementById('dice-again').addEventListener('click', () => {
+      // Hide result, start rolling again
+      document.getElementById('dice-result').classList.remove('dice-overlay__result--visible');
+      document.getElementById('dice-result').style.display = 'none';
+      animateDiceRoll();
+    });
+    document.getElementById('dice-close').addEventListener('click', closeOverlay);
+    document.getElementById('dice-overlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget && !isRolling) closeOverlay();
+    });
+  </script>
+
+</body>
+</html>
