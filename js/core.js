@@ -33,6 +33,48 @@ if (langToggle) {
   });
 }
 
+// Rotating headline
+const headlines = [
+  { en: 'a toolkit for moving words around', uk: 'набір для переміщення слів' },
+  { en: 'the library has no walls',          uk: 'бібліотека без стін' },
+  { en: 'every tool changes the hand',       uk: 'кожен інструмент змінює руку' },
+  { en: 'somewhere between babel and aleph',  uk: 'десь між вавилоном і алефом' },
+];
+
+const headlineEl = document.getElementById('headline');
+if (headlineEl && headlines.length > 0) {
+  let hIdx = 0;
+  const lang = () => html.getAttribute('data-lang') || 'en';
+
+  function showHeadline(index, animate = true) {
+    const span = document.createElement('span');
+    span.textContent = headlines[index][lang()];
+    span.className = animate ? 'headline--entering' : 'headline--visible';
+    headlineEl.textContent = '';
+    headlineEl.appendChild(span);
+    if (animate) requestAnimationFrame(() => { span.className = 'headline--visible'; });
+  }
+
+  function cycleHeadline() {
+    const current = headlineEl.querySelector('span');
+    if (current) {
+      current.className = 'headline--leaving';
+      setTimeout(() => {
+        hIdx = (hIdx + 1) % headlines.length;
+        showHeadline(hIdx);
+      }, 600);
+    }
+  }
+
+  showHeadline(0, false);
+  setInterval(cycleHeadline, 4000);
+
+  // Update headline text when language toggles
+  if (langToggle) {
+    langToggle.addEventListener('click', () => showHeadline(hIdx, false));
+  }
+}
+
 // Connection graph — empty until real content is added
 const graph = [];
 
