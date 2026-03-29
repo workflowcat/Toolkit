@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kit Helmsley</title>
+  <title>Toolkit — Andrii Udovychenko</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
@@ -14,12 +14,8 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="/" class="nav__name">Kit Helmsley</a>
+    <a href="/" class="nav__name">Toolkit</a>
     <div class="nav__right">
-      <span class="bi-inline nav__link"><span class="lang-en">work</span><span class="lang-uk">робота</span></span>
-      <span class="bi-inline nav__link"><span class="lang-en">garden</span><span class="lang-uk">сад</span></span>
-      <span class="bi-inline nav__link"><span class="lang-en">about</span><span class="lang-uk">про</span></span>
-      <button class="dice-btn" id="dice-btn" aria-label="Roll dice"><span class="dice-face">&#9860;</span></button>
       <button class="lang-toggle" id="lang-toggle">EN · УК</button>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">&#9680;</button>
     </div>
@@ -31,12 +27,12 @@
       <!-- HEADER -->
       <header class="header">
         <div class="bi-block header__title">
-          <span class="lang-en">One mind, several&nbsp;fields.</span>
-          <span class="lang-uk">Один розум, кілька&nbsp;полів.</span>
+          <span class="lang-en">Andrii Udovychenko</span>
+          <span class="lang-uk">Андрій Удовиченко</span>
         </div>
         <div class="bi-block header__bio">
-          <span class="lang-en">I work across legal technology, defense systems, education design, and creative work. The connections between these fields are the point. This site is where those connections surface.</span>
-          <span class="lang-uk">Я працюю на перетині правових технологій, оборонних систем, дизайну освіти та творчої роботи. Зв'язки між цими сферами — це і є суть. Цей сайт — місце, де ці зв'язки виходять на поверхню.</span>
+          <span class="lang-en">i move words around, chief of stuff, and&nbsp;…</span>
+          <span class="lang-uk">я переміщую слова, начальник всього, і&nbsp;…</span>
         </div>
       </header>
 
@@ -47,219 +43,19 @@
         <path class="crack-gold" d="M520 7.5 Q550 5.5 580 8"/>
       </svg>
 
-      <!-- ENTRY: RESEARCH -->
-      <article class="entry">
-        <div class="entry__type entry__type--research">
-          <span class="bi-inline"><span class="lang-en">Research</span><span class="lang-uk">Дослідження</span></span>
-        </div>
-        <h2 class="entry__title">
-          <a href="#">
-            <span class="bi">
-              <span class="lang-en">Adversarial Robustness in Judicial Decision Systems</span>
-              <span class="lang-uk">Стійкість до атак у системах судових рішень</span>
-            </span>
-          </a>
-        </h2>
-        <div class="bi-block entry__excerpt">
-          <span class="lang-en">When we delegate sentencing recommendations to algorithms, we inherit not just their efficiency but their attack surface. This paper maps the vulnerability topology of three deployed court systems and formalizes the transparency-robustness-fairness trilemma.</span>
-          <span class="lang-uk">Коли ми делегуємо рекомендації щодо вироків алгоритмам, ми успадковуємо не лише їхню ефективність, а й їхню вразливість. Ця стаття відображає топологію вразливостей трьох розгорнутих судових систем і формалізує трилему прозорості-стійкості-справедливості.</span>
-        </div>
-        <div class="entry__meta">March 2026 · 22 min</div>
-      </article>
-
-      <!-- NOTE: GARDEN -->
-      <div class="note">
-        <h3 class="note__title">
-          <a href="#">
-            <span class="bi">
-              <span class="lang-en">On Illegibility as Strategy</span>
-              <span class="lang-uk">Про нерозбірливість як стратегію</span>
-            </span>
-          </a>
-        </h3>
-        <div class="bi-block note__body">
-          <span class="lang-en">James C. Scott's concept of legibility inverted. When being hard to read is a feature, not a bug. States need legibility to govern. Individuals sometimes need illegibility to survive.</span>
-          <span class="lang-uk">Концепція розбірливості Джеймса Скотта навпаки. Коли бути важким для прочитання — це перевага, а не вада. Державам потрібна розбірливість для управління. Людям іноді потрібна нерозбірливість для виживання.</span>
-        </div>
-        <div class="note__connections">
-          connected to: <a href="#">pace layers</a> · <a href="#">adversarial robustness</a> · <a href="#">sensor fusion</a>
-        </div>
-      </div>
-
-      <!-- FRAGMENT -->
-      <aside class="fragment">
-        <div class="bi-block fragment__text">
-          <span class="lang-en">The shift from human to algorithmic judgment doesn't eliminate bias. It makes bias <em>addressable</em> — which is either an opportunity or a vulnerability, depending on who's addressing&nbsp;it.</span>
-          <span class="lang-uk">Перехід від людського до алгоритмічного судження не усуває упередженість. Він робить упередженість <em>адресною</em> — що є або можливістю, або вразливістю, залежно від того, хто до неї&nbsp;звертається.</span>
-        </div>
-        <p class="fragment__source">— from "Adversarial Robustness," §3</p>
-      </aside>
-
-      <!-- TOOL -->
-      <div class="tool">
-        <div class="tool__name"><a href="#">voxkit</a> <span class="tool__status">active</span></div>
-        <div class="bi-block tool__desc">
-          <span class="lang-en">Voice interaction layer for legal research databases. Built for courtroom pace — you ask a question out loud and it searches case law in real time.</span>
-          <span class="lang-uk">Голосовий інтерфейс для баз правових досліджень. Створений для темпу судового засідання — ви задаєте питання вголос, і система шукає судову практику в реальному часі.</span>
-        </div>
-        <div class="tool__stack">python · whisper · fastapi</div>
-      </div>
-
-      <!-- CRACK -->
-      <svg class="crack" viewBox="0 0 720 16" preserveAspectRatio="none">
-        <path class="crack-thin" d="M0 9 Q90 5 180 8 Q270 12 360 8 Q450 4 540 9 Q630 12 720 7"/>
-        <path class="crack-gold" d="M160 8 Q200 7 240 9"/>
-        <path class="crack-gold" d="M440 6 Q480 5 520 8.5"/>
-        <path class="crack-gold" d="M620 10 Q660 11 700 7.5"/>
-      </svg>
-
-      <!-- ENTRY: ARTS -->
-      <article class="entry">
-        <div class="entry__type entry__type--arts">
-          <span class="bi-inline"><span class="lang-en">Arts</span><span class="lang-uk">Мистецтво</span></span>
-        </div>
-        <h2 class="entry__title">
-          <a href="#">
-            <span class="bi">
-              <span class="lang-en">The Repair Aesthetic: Why Kintsugi Matters for Systems&nbsp;Design</span>
-              <span class="lang-uk">Естетика ремонту: чому кінцугі має значення для проєктування&nbsp;систем</span>
-            </span>
-          </a>
-        </h2>
-        <div class="bi-block entry__excerpt">
-          <span class="lang-en">Most design philosophies treat failure as something to hide. The Japanese tradition of golden repair suggests a different relationship with breakage — one with practical implications for how we build resilient systems. And for how we think about Ukraine.</span>
-          <span class="lang-uk">Більшість філософій дизайну сприймають невдачу як щось, що потрібно приховати. Японська традиція золотого ремонту пропонує інші стосунки з руйнуванням — з практичними наслідками для того, як ми будуємо стійкі системи. І для того, як ми думаємо про Україну.</span>
-        </div>
-        <div class="entry__meta">January 2026 · 14 min</div>
-      </article>
-
-      <!-- INLINE VIZ -->
-      <div class="viz-inline">
-        <svg viewBox="0 0 660 180" fill="none">
-          <g opacity="0.6">
-            <circle cx="80" cy="90" r="6" fill="none" stroke="var(--accent-research)" stroke-width="0.75"/>
-            <circle cx="180" cy="55" r="10" fill="none" stroke="var(--accent-research)" stroke-width="0.75"/>
-            <circle cx="270" cy="100" r="4" fill="none" stroke="var(--accent-defense)" stroke-width="0.75"/>
-            <circle cx="330" cy="70" r="14" fill="none" stroke="var(--gold)" stroke-width="0.75"/>
-            <circle cx="420" cy="110" r="8" fill="none" stroke="var(--accent-arts)" stroke-width="0.75"/>
-            <circle cx="500" cy="60" r="6" fill="none" stroke="var(--accent-tools)" stroke-width="0.75"/>
-            <circle cx="570" cy="120" r="10" fill="none" stroke="var(--accent-garden)" stroke-width="0.75"/>
-            <line x1="86" y1="88" x2="172" y2="60" stroke="var(--crack)" stroke-width="0.4"/>
-            <line x1="188" y1="62" x2="266" y2="97" stroke="var(--crack)" stroke-width="0.4"/>
-            <line x1="276" y1="98" x2="318" y2="76" stroke="var(--gold)" stroke-width="0.6" opacity="0.3"/>
-            <line x1="342" y1="76" x2="413" y2="106" stroke="var(--crack)" stroke-width="0.4"/>
-            <line x1="427" y1="106" x2="494" y2="64" stroke="var(--crack)" stroke-width="0.4"/>
-            <line x1="506" y1="64" x2="562" y2="114" stroke="var(--crack)" stroke-width="0.4"/>
-            <line x1="330" y1="70" x2="500" y2="60" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
-            <path d="M40 95 Q130 88 220 96 Q310 105 400 90 Q490 75 620 100" stroke="var(--gold)" stroke-width="1" opacity="0.08" fill="none"/>
-          </g>
-          <circle cx="330" cy="70" r="2" fill="var(--gold)" opacity="0.5"/>
-        </svg>
-        <div class="bi-block viz-inline__caption">
-          <span class="lang-en">Citation topology: how judicial AI literature connects across domains.</span>
-          <span class="lang-uk">Топологія цитувань: як література про судовий ШІ з'єднується між доменами.</span>
-        </div>
-      </div>
-
-      <!-- ENTRY: DEFENSE -->
-      <article class="entry">
-        <div class="entry__type entry__type--defense">
-          <span class="bi-inline"><span class="lang-en">Defense</span><span class="lang-uk">Оборона</span></span>
-        </div>
-        <h2 class="entry__title">
-          <a href="defense/">
-            <span class="bi">
-              <span class="lang-en">Sensor Fusion Under Contested Conditions</span>
-              <span class="lang-uk">Злиття сенсорних даних в умовах протидії</span>
-            </span>
-          </a>
-        </h2>
-        <div class="bi-block entry__excerpt">
-          <span class="lang-en">Field notes from a DoD engagement on maintaining situational awareness when adversaries degrade your inputs. The parallel to judicial AI is not accidental.</span>
-          <span class="lang-uk">Польові нотатки з роботи з Міністерством оборони щодо підтримки ситуаційної обізнаності, коли противники погіршують ваші вхідні дані. Паралель із судовим ШІ не випадкова.</span>
-        </div>
-        <div class="entry__meta">December 2025 · 8 min</div>
-      </article>
-
-      <!-- NOTE: GARDEN -->
-      <div class="note">
-        <h3 class="note__title">
-          <a href="#">
-            <span class="bi">
-              <span class="lang-en">Pace Layers and Software Architecture</span>
-              <span class="lang-uk">Шари темпу та архітектура програмного забезпечення</span>
-            </span>
-          </a>
-        </h3>
-        <div class="bi-block note__body">
-          <span class="lang-en">Stewart Brand's framework maps onto how durable software systems are structured. Infrastructure moves slowly. UI moves fast. The trouble starts when you confuse which layer you're working in.</span>
-          <span class="lang-uk">Фреймворк Стюарта Бренда відповідає тому, як структуровані довговічні програмні системи. Інфраструктура рухається повільно. Інтерфейс — швидко. Проблеми починаються, коли плутаєш шари.</span>
-        </div>
-        <div class="note__connections">
-          connected to: <a href="#">illegibility</a> · <a href="#">kintsugi</a>
-        </div>
-      </div>
-
-      <!-- TOOL -->
-      <div class="tool">
-        <div class="tool__name"><a href="#">precedent-graph</a> <span class="tool__status">archived</span></div>
-        <div class="bi-block tool__desc">
-          <span class="lang-en">Visual tool for mapping citation networks in case law. Reveals doctrinal lineages that aren't obvious from reading individual opinions.</span>
-          <span class="lang-uk">Візуальний інструмент для побудови мереж цитувань у судовій практиці. Виявляє доктринальні лінії, які не очевидні при читанні окремих рішень.</span>
-        </div>
-        <div class="tool__stack">d3.js · node</div>
-      </div>
-
-      <!-- CRACK -->
-      <svg class="crack" viewBox="0 0 720 16" preserveAspectRatio="none">
-        <path class="crack-thin" d="M0 7 Q100 11 200 8 Q300 5 400 9 Q500 13 600 8 Q680 5 720 8"/>
-        <path class="crack-gold" d="M380 8.5 Q420 12 460 9"/>
-      </svg>
-
-      <!-- DRIFT -->
-      <div class="drift">
-        <div class="drift__label">
-          <span class="bi-inline"><span class="lang-en">Follow the crack</span><span class="lang-uk">Слідуй за тріщиною</span></span>
-        </div>
-        <div class="drift__links">
-          <a href="#" class="drift__link"><span class="drift__link-type">arts</span>Why repair matters more than prevention</a>
-          <a href="#" class="drift__link"><span class="drift__link-type">garden</span>Wabi-sabi and the ethics of impermanence</a>
-          <a href="defense/" class="drift__link"><span class="drift__link-type">defense</span>Graceful degradation in contested systems</a>
-        </div>
-      </div>
-
       <!-- FOOTER -->
       <footer class="footer">
         <div>
-          <span class="bi-inline"><span class="lang-en">Kit Helmsley · 2026 · golden repair</span><span class="lang-uk">Кіт Гелмслі · 2026 · золотий ремонт</span></span>
+          <span class="bi-inline"><span class="lang-en">Andrii Udovychenko · 2026</span><span class="lang-uk">Андрій Удовиченко · 2026</span></span>
         </div>
-        <div><a href="mailto:kit@example.com">email</a> · <a href="#">github &#8599;</a></div>
+        <div>
+          <a href="https://github.com/workflowcat">github</a> ·
+          <a href="https://x.com/AUdovychenko">x</a> ·
+          <a href="https://www.linkedin.com/in/andrii93/">linkedin</a>
+        </div>
       </footer>
 
     </main>
-  </div>
-
-  <!-- DICE OVERLAY -->
-  <div class="dice-overlay" id="dice-overlay">
-    <div class="dice-overlay__inner">
-      <div class="dice-overlay__rolling" id="dice-rolling">
-        <div class="dice-overlay__rolling-text" id="dice-rolling-text"></div>
-      </div>
-      <div class="dice-overlay__progress" id="dice-progress">
-        <div class="dice-overlay__progress-fill" id="dice-progress-fill"></div>
-      </div>
-      <div class="dice-overlay__result" id="dice-result">
-        <div class="dice-overlay__type" id="dice-type"></div>
-        <h2 class="dice-overlay__title"><a href="#" id="dice-title-link"><span id="dice-title"></span></a></h2>
-        <p class="dice-overlay__excerpt" id="dice-excerpt"></p>
-        <div class="dice-overlay__actions">
-          <button class="dice-overlay__again" id="dice-again" aria-label="Roll again"><span class="dice-face">&#9858;</span></button>
-          <button class="dice-overlay__close" id="dice-close">
-            <span class="bi-inline"><span class="lang-en">close</span><span class="lang-uk">закрити</span></span>
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script type="module" src="js/core.js"></script>

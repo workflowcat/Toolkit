@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sensor Fusion Under Contested Conditions — Kit Helmsley</title>
+  <title>Toolkit — Defense</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
@@ -14,11 +14,8 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="/" class="nav__name">Kit Helmsley</a>
+    <a href="/" class="nav__name">Toolkit</a>
     <div class="nav__right">
-      <span class="bi-inline nav__link"><span class="lang-en">work</span><span class="lang-uk">робота</span></span>
-      <span class="bi-inline nav__link"><span class="lang-en">garden</span><span class="lang-uk">сад</span></span>
-      <span class="bi-inline nav__link"><span class="lang-en">about</span><span class="lang-uk">про</span></span>
       <button class="lang-toggle" id="lang-toggle">EN · УК</button>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">&#9680;</button>
     </div>
@@ -34,208 +31,26 @@
       <header class="bp-header">
         <div class="bp-title-block">
           <div class="bi-block bp-title">
-            <span class="lang-en">Sensor Fusion Under Contested Conditions</span>
-            <span class="lang-uk">Злиття сенсорних даних в умовах протидії</span>
+            <span class="lang-en">Defense Kit</span>
+            <span class="lang-uk">Оборонний кіт</span>
           </div>
           <div class="bi-block bp-subtitle">
-            <span class="lang-en">Field notes from a DoD engagement on maintaining situational awareness when adversaries degrade your inputs. The parallel to judicial AI is not accidental.</span>
-            <span class="lang-uk">Польові нотатки з роботи з Міністерством оборони щодо підтримки ситуаційної обізнаності, коли противники погіршують ваші вхідні дані. Паралель із судовим ШІ не випадкова.</span>
-          </div>
-          <div class="bp-meta">
-            <div class="bp-meta__item"><strong>Author</strong> Kit Helmsley</div>
-            <div class="bp-meta__item"><strong>Date</strong> December 2025</div>
-            <div class="bp-meta__item"><strong>Classification</strong> UNCLASSIFIED</div>
-            <div class="bp-meta__item"><strong>Read</strong> 8 min</div>
+            <span class="lang-en">Content arriving soon. This page uses the blueprint style template.</span>
+            <span class="lang-uk">Контент незабаром. Ця сторінка використовує шаблон креслення.</span>
           </div>
         </div>
       </header>
 
-      <!-- SECTION 1 -->
-      <div class="bp-fold">
-        <span class="bp-fold__label">Section 01 — The Problem Space</span>
-        <span class="bp-fold__line"></span>
-      </div>
-
-      <div class="bi-block bp-body">
-        <span class="lang-en"><p>Every sensor lies. This is not a defect — it is the fundamental condition of measurement. A radar return reflects off terrain. A thermal signature bleeds into background heat. An acoustic pickup catches wind. These are not errors. They are the physics of observation.</p>
-
-<p>The standard approach to sensor fusion treats this as a statistical problem. You build a Kalman filter. You weight your inputs by confidence intervals. You produce a <strong>best estimate</strong> of ground truth. This works beautifully in peacetime.</p>
-
-<p>In contested conditions, the game changes. Your adversary isn't just producing noise — they're producing <em>structured noise</em>. Spoofed GPS signals. Decoy thermal signatures. Jamming patterns designed to exploit the specific weaknesses of your fusion algorithm. The inputs aren't just unreliable. They're adversarial.</p></span>
-        <span class="lang-uk"><p>Кожен сенсор бреше. Це не дефект — це фундаментальна умова вимірювання. Радарний сигнал відбивається від місцевості. Теплова сигнатура розмивається у фоновому теплі. Акустичний приймач ловить вітер. Це не помилки. Це фізика спостереження.</p>
-
-<p>Стандартний підхід до злиття сенсорних даних розглядає це як статистичну задачу. Будуєш фільтр Калмана. Зважуєш вхідні дані за довірчими інтервалами. Отримуєш <strong>найкращу оцінку</strong> реальності. Це чудово працює в мирний час.</p>
-
-<p>В умовах протидії гра змінюється. Противник не просто створює шум — він створює <em>структурований шум</em>. Підроблені GPS-сигнали. Фальшиві теплові сигнатури. Паттерни глушіння, розроблені для експлуатації конкретних слабкостей вашого алгоритму злиття. Вхідні дані не просто ненадійні. Вони ворожі.</p></span>
-      </div>
-
-      <div class="bp-callout" data-label="Key Insight">
-        <div class="bi-block">
-          <span class="lang-en"><p>The difference between unreliable data and adversarial data is that adversarial data is designed to survive your filters. It looks more plausible than truth, not less.</p></span>
-          <span class="lang-uk"><p>Різниця між ненадійними та ворожими даними полягає в тому, що ворожі дані розроблені так, щоб пройти через ваші фільтри. Вони виглядають правдоподібніше за правду, а не менш правдоподібно.</p></span>
-        </div>
-      </div>
-
-      <!-- SECTION 2 -->
-      <div class="bp-fold">
-        <span class="bp-fold__label">Section 02 — Three Failure Modes</span>
-        <span class="bp-fold__line"></span>
-      </div>
-
-      <div class="bi-block bp-body">
-        <span class="lang-en"><p>We identified three primary failure modes in contested sensor fusion during the engagement. Each has a direct analogue in judicial decision systems — which is why I took this work in the first place.</p></span>
-        <span class="lang-uk"><p>Ми ідентифікували три основні режими відмови при злитті сенсорних даних в умовах протидії. Кожен має прямий аналог у системах судових рішень — саме тому я і взявся за цю роботу.</p></span>
-      </div>
-
-      <table class="bp-spec">
-        <thead>
-          <tr>
-            <th>Mode</th>
-            <th>Description</th>
-            <th>Judicial Parallel</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Confidence Poisoning</td>
-            <td>Adversary inflates confidence on corrupted channels</td>
-            <td>Precedent inflation in adversarial briefs</td>
-          </tr>
-          <tr>
-            <td>Temporal Desync</td>
-            <td>Sensor timestamps manipulated to create false sequences</td>
-            <td>Evidence chain manipulation in digital forensics</td>
-          </tr>
-          <tr>
-            <td>Graceful Degradation Failure</td>
-            <td>System doesn't know it's degraded — acts on partial data with full confidence</td>
-            <td>Algorithm continues scoring after training distribution shifts</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="bp-annotation">
-        <div class="bi-block">
-          <span class="lang-en">The third mode — not knowing you're degraded — is the most dangerous and the hardest to test for. You can't simulate what you don't know to simulate.</span>
-          <span class="lang-uk">Третій режим — не знати, що ви деградували — найнебезпечніший і найважчий для тестування. Не можна змоделювати те, що не знаєш як змоделювати.</span>
-        </div>
-      </div>
-
-      <!-- SECTION 3 -->
-      <div class="bp-fold">
-        <span class="bp-fold__label">Section 03 — Architecture</span>
-        <span class="bp-fold__line"></span>
-      </div>
-
-      <div class="bi-block bp-body">
-        <span class="lang-en"><p>The architecture we proposed inverts the standard fusion pipeline. Instead of trusting inputs and filtering noise, we <strong>distrust all inputs</strong> and build consensus. Each sensor stream gets an independent credibility score that degrades over time unless actively refreshed by cross-validation against other streams.</p>
-
-<p>Think of it as a jury model rather than a judge model. No single source of truth — only convergent testimony.</p></span>
-        <span class="lang-uk"><p>Архітектура, яку ми запропонували, інвертує стандартний конвеєр злиття. Замість того щоб довіряти вхідним даним і фільтрувати шум, ми <strong>не довіряємо всім вхідним даним</strong> і будуємо консенсус. Кожен потік сенсорних даних отримує незалежну оцінку достовірності, яка деградує з часом, якщо не оновлюється активно перехресною валідацією з іншими потоками.</p>
-
-<p>Думайте про це як про модель присяжних, а не модель судді. Жодного єдиного джерела істини — лише конвергентні свідчення.</p></span>
-      </div>
-
-      <div class="bp-figure">
-        <div class="bp-figure__canvas" id="fusion-diagram">
-          <!-- Pretext-powered text layout will render here -->
-          <svg viewBox="0 0 640 200" fill="none" width="100%">
-            <g opacity="0.7">
-              <!-- Sensor inputs -->
-              <rect x="20" y="20" width="100" height="40" rx="2" stroke="var(--bp-cyan)" stroke-width="0.75" fill="none"/>
-              <text x="70" y="44" text-anchor="middle" fill="var(--bp-cyan)" font-family="var(--font-mono)" font-size="10">RADAR</text>
-
-              <rect x="20" y="80" width="100" height="40" rx="2" stroke="var(--bp-cyan)" stroke-width="0.75" fill="none"/>
-              <text x="70" y="104" text-anchor="middle" fill="var(--bp-cyan)" font-family="var(--font-mono)" font-size="10">THERMAL</text>
-
-              <rect x="20" y="140" width="100" height="40" rx="2" stroke="var(--bp-cyan)" stroke-width="0.75" fill="none"/>
-              <text x="70" y="164" text-anchor="middle" fill="var(--bp-cyan)" font-family="var(--font-mono)" font-size="10">ACOUSTIC</text>
-
-              <!-- Credibility scoring -->
-              <rect x="200" y="20" width="120" height="160" rx="2" stroke="var(--bp-annotation)" stroke-width="0.75" fill="none" stroke-dasharray="4 2"/>
-              <text x="260" y="15" text-anchor="middle" fill="var(--bp-dim)" font-family="var(--font-mono)" font-size="8">CREDIBILITY</text>
-              <text x="260" y="65" text-anchor="middle" fill="var(--bp-annotation)" font-family="var(--font-mono)" font-size="9">score: 0.82</text>
-              <text x="260" y="105" text-anchor="middle" fill="var(--bp-annotation)" font-family="var(--font-mono)" font-size="9">score: 0.41</text>
-              <text x="260" y="165" text-anchor="middle" fill="var(--bp-annotation)" font-family="var(--font-mono)" font-size="9">score: 0.93</text>
-
-              <!-- Cross-validation -->
-              <rect x="390" y="55" width="120" height="90" rx="2" stroke="var(--gold)" stroke-width="1" fill="none"/>
-              <text x="450" y="48" text-anchor="middle" fill="var(--gold)" font-family="var(--font-mono)" font-size="8">CONSENSUS</text>
-              <text x="450" y="95" text-anchor="middle" fill="var(--gold)" font-family="var(--font-mono)" font-size="10">FUSION</text>
-              <text x="450" y="115" text-anchor="middle" fill="var(--bp-dim)" font-family="var(--font-mono)" font-size="8">jury model</text>
-
-              <!-- Output -->
-              <rect x="570" y="75" width="60" height="50" rx="2" stroke="var(--text-mid)" stroke-width="0.75" fill="none"/>
-              <text x="600" y="104" text-anchor="middle" fill="var(--text-mid)" font-family="var(--font-mono)" font-size="9">OUTPUT</text>
-
-              <!-- Connecting lines -->
-              <line x1="120" y1="40" x2="200" y2="55" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="120" y1="100" x2="200" y2="100" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="120" y1="160" x2="200" y2="155" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="320" y1="65" x2="390" y2="85" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="320" y1="100" x2="390" y2="100" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="320" y1="155" x2="390" y2="125" stroke="var(--bp-line)" stroke-width="0.5"/>
-              <line x1="510" y1="100" x2="570" y2="100" stroke="var(--gold)" stroke-width="0.75"/>
-
-              <!-- Cross-validation feedback loops -->
-              <path d="M260 75 Q260 90 260 95" stroke="var(--bp-cyan)" stroke-width="0.4" stroke-dasharray="2 2"/>
-              <path d="M260 115 Q260 130 260 155" stroke="var(--bp-cyan)" stroke-width="0.4" stroke-dasharray="2 2"/>
-            </g>
-          </svg>
-        </div>
-        <div class="bp-figure__caption">
-          <strong>Fig. 1</strong>
-          <span class="bi-inline">
-            <span class="lang-en">Consensus-based fusion architecture. Each sensor stream is independently scored for credibility before entering the fusion layer.</span>
-            <span class="lang-uk">Архітектура злиття на основі консенсусу. Кожен потік сенсорних даних незалежно оцінюється на достовірність перед входом у шар злиття.</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- GOLD THREAD — connection back -->
-      <div class="bp-gold-thread">
-        <div class="bi-block">
-          <span class="lang-en"><p>The jury model maps directly onto adversarial robustness in judicial systems. When we trust no single input implicitly, we build systems that can survive corruption of any individual channel — whether that channel is a radar return or a case citation.</p></span>
-          <span class="lang-uk"><p>Модель присяжних безпосередньо відповідає стійкості до атак у судових системах. Коли ми не довіряємо жодному окремому входу безумовно, ми будуємо системи, що витримують корупцію будь-якого окремого каналу — чи то радарний сигнал, чи цитата з судової справи.</p></span>
-        </div>
-      </div>
-
-      <!-- SECTION 4 -->
-      <div class="bp-fold">
-        <span class="bp-fold__label">Section 04 — Field Results</span>
-        <span class="bp-fold__line"></span>
-      </div>
-
-      <div class="bi-block bp-body">
-        <span class="lang-en"><p>During the three-week engagement, we tested the consensus architecture against the standard Kalman-based pipeline in simulated contested environments. The results were not subtle.</p>
-
-<p>Under clean conditions, the standard pipeline slightly outperformed our architecture — it was faster and more precise when inputs were trustworthy. This is expected. Trust is efficient.</p>
-
-<p>Under contested conditions — GPS spoofing, thermal decoys, coordinated jamming — the standard pipeline failed catastrophically within 90 seconds. Our architecture degraded gracefully, maintaining 73% situational awareness even with two of three sensor channels compromised.</p>
-
-<p>The cost of distrust is latency. The cost of misplaced trust is everything.</p></span>
-        <span class="lang-uk"><p>Протягом тритижневої роботи ми тестували архітектуру консенсусу проти стандартного конвеєра на основі фільтра Калмана у змодельованих умовах протидії. Результати не були тонкими.</p>
-
-<p>У чистих умовах стандартний конвеєр дещо перевершив нашу архітектуру — він був швидшим і точнішим, коли вхідні дані були надійними. Це очікувано. Довіра ефективна.</p>
-
-<p>В умовах протидії — підміна GPS, теплові приманки, координоване глушіння — стандартний конвеєр зазнав катастрофічної відмови протягом 90 секунд. Наша архітектура деградувала плавно, зберігаючи 73% ситуаційної обізнаності навіть при компрометації двох з трьох сенсорних каналів.</p>
-
-<p>Ціна недовіри — затримка. Ціна безпідставної довіри — все.</p></span>
-      </div>
-
-      <div class="bp-callout" data-label="Conclusion">
-        <div class="bi-block">
-          <span class="lang-en"><p>Build for the adversary you haven't met yet. The system that assumes clean inputs will fail the moment inputs are contested. The system that assumes contested inputs will merely be slower when inputs are clean. Choose your failure mode.</p></span>
-          <span class="lang-uk"><p>Будуйте для противника, якого ще не зустріли. Система, що припускає чисті вхідні дані, зазнає поразки в момент, коли дані будуть оскаржені. Система, що припускає оскаржені дані, буде лише повільнішою, коли дані чисті. Обирайте свій режим відмови.</p></span>
-        </div>
-      </div>
-
       <!-- FOOTER -->
       <footer class="footer">
         <div>
-          <span class="bi-inline"><span class="lang-en">Kit Helmsley · 2026 · golden repair</span><span class="lang-uk">Кіт Гелмслі · 2026 · золотий ремонт</span></span>
+          <span class="bi-inline"><span class="lang-en">Andrii Udovychenko · 2026</span><span class="lang-uk">Андрій Удовиченко · 2026</span></span>
         </div>
-        <div><a href="mailto:kit@example.com">email</a> · <a href="#">github &#8599;</a></div>
+        <div>
+          <a href="https://github.com/workflowcat">github</a> ·
+          <a href="https://x.com/AUdovychenko">x</a> ·
+          <a href="https://www.linkedin.com/in/andrii93/">linkedin</a>
+        </div>
       </footer>
 
     </main>
