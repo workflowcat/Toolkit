@@ -1,0 +1,338 @@
+/* =============================================
+   KINTSUGI — the main switchboard style.
+   Golden repair, warm stone, visible seams.
+   ============================================= */
+
+/* Header */
+.header { padding: 5rem 0 3rem; }
+
+.header__title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 1rem;
+}
+
+.header__bio {
+  font-weight: 300;
+  color: var(--text-mid);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* Crack divider */
+.crack { display: block; width: 100%; height: 16px; margin: 2.5rem 0; overflow: visible; }
+.crack-thin { stroke: var(--crack); stroke-width: 0.5; fill: none; stroke-linecap: round; }
+.crack-gold { stroke: var(--gold); stroke-width: 1.5; fill: none; stroke-linecap: round; opacity: 0.35; }
+
+/* Content entries */
+.entry { margin-bottom: 3rem; }
+
+.entry__type {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
+}
+
+.entry__type--research { color: var(--accent-research); }
+.entry__type--tools { color: var(--accent-tools); }
+.entry__type--arts { color: var(--accent-arts); }
+.entry__type--garden { color: var(--accent-garden); }
+.entry__type--defense { color: var(--accent-defense); }
+
+.entry__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.375rem;
+}
+
+.entry__title a { color: var(--text); transition: color 200ms; }
+.entry__title a:hover { color: var(--gold); }
+
+.entry__excerpt {
+  font-weight: 300;
+  color: var(--text-mid);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.entry__meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+}
+
+/* Garden note */
+.note {
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+.note__title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.note__title a { color: var(--text); transition: color 200ms; }
+.note__title a:hover { color: var(--gold); }
+
+.note__body {
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.note__connections {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--text-faint);
+  margin-top: 0.375rem;
+}
+
+.note__connections a { color: var(--text-faint); border-bottom: 1px dotted var(--border); }
+.note__connections a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* Tool card */
+.tool {
+  margin-bottom: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.tool__name { font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 400; margin-bottom: 0.25rem; }
+.tool__name a { color: var(--text); transition: color 200ms; }
+.tool__name a:hover { color: var(--gold); }
+.tool__desc { font-size: 0.875rem; font-weight: 300; color: var(--text-mid); }
+.tool__stack { font-family: var(--font-mono); font-size: 0.625rem; color: var(--text-faint); margin-top: 0.5rem; }
+
+.tool__status {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  margin-left: 0.5rem;
+}
+
+/* Quote fragment */
+.fragment {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--gold);
+  opacity: 0.85;
+}
+
+.fragment__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.fragment__source { font-size: 0.75rem; color: var(--text-faint); margin-top: 0.375rem; }
+
+/* Drift / follow the crack */
+.drift {
+  margin: 3rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.drift__label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.drift__links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.drift__link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  color: var(--text-mid);
+  font-size: 0.9375rem;
+  font-weight: 300;
+  transition: color 200ms;
+}
+.drift__link:hover { color: var(--gold); }
+
+.drift__link-type {
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  min-width: 48px;
+}
+
+/* Inline viz */
+.viz-inline {
+  margin: 2rem -1rem;
+  padding: 1.5rem 1rem;
+  background: var(--surface);
+  border-radius: 4px;
+}
+
+.viz-inline__caption {
+  font-size: 0.6875rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  margin-top: 0.75rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.viz-inline svg { width: 100%; display: block; }
+
+/* Dice overlay */
+.dice-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg);
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+}
+.dice-overlay--open { display: flex; }
+
+.dice-overlay__inner {
+  max-width: 520px;
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dice-overlay__rolling {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--text-mid);
+  min-height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.dice-overlay__rolling-text { text-align: center; width: 100%; }
+
+.dice-overlay__progress {
+  width: 80px;
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem auto 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.dice-overlay__progress-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+}
+
+.dice-overlay__result { display: none; text-align: center; }
+
+.dice-overlay__result--visible {
+  display: block;
+  animation: dice-land 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dice-land {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.dice-overlay__type {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.625rem;
+}
+
+.dice-overlay__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.875rem;
+  color: var(--text);
+}
+.dice-overlay__title a { color: inherit; text-decoration: none; transition: color 200ms; }
+.dice-overlay__title a:hover { color: var(--gold); }
+
+.dice-overlay__excerpt {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.dice-overlay__actions {
+  display: flex; gap: 0.75rem;
+  justify-content: center; align-items: center;
+}
+
+.dice-overlay__again {
+  background: none; border: 1px solid var(--border);
+  border-radius: 3px;
+  width: 28px; height: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 200ms;
+}
+.dice-overlay__again .dice-face { font-size: 13px; color: var(--text-mid); transition: all 200ms; }
+.dice-overlay__again:hover { border-color: var(--gold); }
+.dice-overlay__again:hover .dice-face { color: var(--gold); }
+
+.dice-overlay__close {
+  background: none; border: 1px solid var(--border);
+  border-radius: 3px; padding: 0.375rem 0.875rem;
+  font-family: var(--font-mono); font-size: 0.6875rem;
+  color: var(--text-mid); cursor: pointer;
+  transition: all 200ms;
+}
+.dice-overlay__close:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header { padding: 3rem 0 2rem; }
+  .header__title { font-size: 1.75rem; }
+}

@@ -1,0 +1,367 @@
+/* =============================================
+   BLUEPRINT — technical drawing aesthetic.
+   Deep navy, grid lines, cyan accents,
+   monospace annotations, dimension callouts.
+   Retains core DNA: gold thread, bilingual,
+   same type stack.
+   ============================================= */
+
+/* Override core tokens for blueprint pages */
+:root {
+  --bg: #0B1A2E;
+  --surface: #0F2240;
+  --text: #C8D8E8;
+  --text-mid: #8A9EB4;
+  --text-faint: #506478;
+  --gold: #C8A84E;
+  --gold-soft: rgba(200,168,78,0.08);
+  --gold-hover: #DABB5E;
+  --crack: #1A3050;
+  --border: #1E3654;
+  --code-bg: #0D1E34;
+  --accent-research: #4A8AB4;
+  --accent-tools: #6A9A5E;
+  --accent-arts: #B87A62;
+  --accent-garden: #5EA072;
+  --accent-defense: #6A98B8;
+
+  /* Blueprint-specific */
+  --bp-grid: rgba(70,120,170,0.06);
+  --bp-line: rgba(100,160,220,0.15);
+  --bp-cyan: #5EAAD4;
+  --bp-annotation: #6A98B8;
+  --bp-dim: #405870;
+}
+
+[data-theme="dark"] {
+  --bg: #060E1A;
+  --surface: #0A1628;
+  --text: #B8C8D8;
+  --text-mid: #7A8EA4;
+  --text-faint: #405468;
+  --crack: #142438;
+  --border: #182C44;
+  --code-bg: #081420;
+  --bp-grid: rgba(70,120,170,0.04);
+  --bp-line: rgba(100,160,220,0.10);
+}
+
+/* Grid background */
+body {
+  background-image:
+    linear-gradient(var(--bp-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bp-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
+}
+
+/* Override body font to lean monospace */
+body {
+  font-family: var(--font-mono), var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* Page — wider for blueprint */
+.page { max-width: 800px; }
+
+/* =============================================
+   ARTICLE LAYOUT
+   ============================================= */
+
+.bp-header {
+  padding: 4rem 0 2.5rem;
+  border-bottom: 1px solid var(--bp-line);
+  margin-bottom: 2.5rem;
+}
+
+/* Title block — styled like a drawing title block */
+.bp-title-block {
+  border: 1px solid var(--bp-line);
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.bp-title-block::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid var(--bp-line);
+  transform: translate(3px, 3px);
+  pointer-events: none;
+}
+
+.bp-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.bp-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.bp-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bp-line);
+}
+
+.bp-meta__item {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--bp-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bp-meta__item strong {
+  color: var(--text-mid);
+  font-weight: 400;
+}
+
+/* Section dividers — fold lines */
+.bp-fold {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+}
+
+.bp-fold__line {
+  flex: 1;
+  height: 0;
+  border-top: 1px dashed var(--bp-line);
+}
+
+.bp-fold__label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bp-annotation);
+  white-space: nowrap;
+}
+
+/* Dimension callout */
+.bp-callout {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--bp-line);
+  background: var(--surface);
+}
+
+.bp-callout::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -0.5em;
+  left: 1rem;
+  background: var(--bg);
+  padding: 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bp-cyan);
+}
+
+.bp-callout p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+
+/* Leader line annotation — side notes */
+.bp-annotation {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1.5rem 0;
+  color: var(--bp-annotation);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.bp-annotation::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 1.25rem;
+  border-top: 1px solid var(--bp-cyan);
+}
+
+.bp-annotation::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(0.6em - 2px);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--bp-cyan);
+}
+
+/* Body text */
+.bp-body {
+  color: var(--text-mid);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+.bp-body p { margin-bottom: 1.25rem; }
+
+.bp-body strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.bp-body em {
+  color: var(--bp-cyan);
+  font-style: normal;
+}
+
+/* Spec table — like a parts list */
+.bp-spec {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.bp-spec th {
+  text-align: left;
+  font-weight: 400;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bp-dim);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--bp-line);
+}
+
+.bp-spec td {
+  padding: 0.625rem 1rem;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--bp-grid);
+}
+
+.bp-spec tr:hover td {
+  color: var(--text);
+  background: var(--surface);
+}
+
+/* Code blocks — terminal style */
+.bp-code {
+  background: var(--code-bg);
+  border: 1px solid var(--bp-line);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Figure — technical diagram placeholder */
+.bp-figure {
+  margin: 2.5rem 0;
+  border: 1px solid var(--bp-line);
+  background: var(--surface);
+  padding: 2rem;
+}
+
+.bp-figure__canvas {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bp-dim);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.bp-figure__caption {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bp-line);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--bp-dim);
+}
+
+.bp-figure__caption strong {
+  color: var(--bp-cyan);
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+/* Gold thread — the connection back to the main site */
+.bp-gold-thread {
+  margin: 3rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--gold);
+  background: var(--gold-soft);
+}
+
+.bp-gold-thread p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--gold);
+}
+
+/* Back link */
+.bp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 200ms;
+  margin-bottom: 1rem;
+}
+
+.bp-back:hover { color: var(--gold); }
+
+.bp-back::before {
+  content: '\2190';
+  font-size: 0.875rem;
+}
+
+/* Bilingual overrides for blueprint */
+[data-lang="en"] .entry__excerpt .lang-uk,
+[data-lang="uk"] .entry__excerpt .lang-en,
+[data-lang="en"] .bp-body .lang-uk,
+[data-lang="uk"] .bp-body .lang-en,
+[data-lang="en"] .bp-subtitle .lang-uk,
+[data-lang="uk"] .bp-subtitle .lang-en {
+  border-left-color: var(--bp-cyan);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page { max-width: 100%; }
+  .bp-title { font-size: 1.5rem; }
+  .bp-meta { flex-direction: column; gap: 0.5rem; }
+  .bp-title-block { padding: 1rem 1.25rem; }
+}
